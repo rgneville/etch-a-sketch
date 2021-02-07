@@ -1,6 +1,9 @@
 let gridSize = 16;
-
 const ctr = document.querySelector('#container');
+
+function divColorChange (div) {
+    div.setAttribute('style', 'background-color: blue');
+}
 
 for (let i = 0; i < gridSize; i++) {
     xDiv = document.createElement('div');
@@ -8,17 +11,10 @@ for (let i = 0; i < gridSize; i++) {
     for (let i = 0; i < gridSize; i++) {
         yDiv = document.createElement('div');
         yDiv.setAttribute('class', 'gridBox');
+        yDiv.addEventListener('mouseover', () => {
+            divColorChange(yDiv);
+        });
         xDiv.appendChild(yDiv);
     }
 }
-
-const grdbx = document.querySelectorAll('.gridBox');
-
-for (let i = 0; i < grdbx.length; i++) {
-    grdbx[i].addEventListener('hover', (e) => {
-        console.log(e);
-        grdbx[i].setAttribute('style', 'background-color: black');
-    })
-}
-
 
