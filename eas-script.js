@@ -1,4 +1,5 @@
 let gridSize = 16;
+let maxGridSize = 960;
 const ctr = document.querySelector('#container');
 const rsbtn = document.querySelector('#reset-button')
 rsbtn.addEventListener('click', resetButton);
@@ -12,6 +13,9 @@ function divColorChange (div) {
 
 function resetButton () {
     gridSize = parseInt(prompt("How big should the grid be?", "16"));
+    if (gridSize < 1 || gridSize > 100) {
+        gridSize = parseInt(prompt("Please enter a value between 1 and 100"));
+    }
     clearGrid();
     makeGrid();
 }
@@ -23,6 +27,11 @@ for (let i = 0; i < gridSize; i++) {
     for (let i = 0; i < gridSize; i++) {
         const yDiv = document.createElement('div');
         yDiv.setAttribute('class', 'gridBox');
+        // this code is buggy - trying to fit grid to max 960 pixel window using flexbox
+        let divHeight = (maxGridSize/gridSize);
+        yDiv.style.width = `"${divHeight} px"`;
+        yDiv.style.height = `"${divHeight} px"`;
+        //
         yDiv.addEventListener('mouseover', () => {
             divColorChange(yDiv);
         });

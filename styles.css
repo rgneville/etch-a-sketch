@@ -6,9 +6,8 @@ body {
 }
 
 #container {
-    display: flex;
     justify-content: center;
-    padding: 10px;
+    display: flex;
 }
 
 .gridBox{
@@ -17,4 +16,9 @@ body {
     border-color: black;
     width: 15px;
     height: 15px;
+    flex: 1;
+}
+
+#reset-button {
+    margin-bottom: 20px;
 }
